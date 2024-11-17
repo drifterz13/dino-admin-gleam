@@ -1,5 +1,5 @@
 import argv
-import csv.{ReadFileError}
+import camera/importer.{ReadFileError}
 import gleam/io
 import gleam/string
 
@@ -8,7 +8,7 @@ pub fn main() {
     ["import", "path", path] -> {
       io.println("Going to read path: " <> path)
 
-      case csv.read_csv(path) {
+      case importer.read_csv(path) {
         Ok(content) ->
           io.println("Read CSV successfullt: " <> string.inspect(content))
         Error(ReadFileError(msg)) ->
